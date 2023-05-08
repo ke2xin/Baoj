@@ -1,0 +1,54 @@
+<sjs module="utils" src="../../utils/tools.sjs"></sjs>
+<view style="background: #0a3761;padding:50px 0 30px;width: 100%;height: 120px;position: fixed;z-index: 1;">
+    <view style="text-align: center;">
+        <text style="border-bottom: 5px solid #ff6700;font-size: 25px;color: #ffffff;">历史价格比价助手</text>
+    </view>
+    <view style="width: 95%;background: #ffffff;height: 50px;margin:30px auto 5px;border-radius: 30px;line-height: 50px;text-align: center;">
+        <view bindtap="go" style="display: flex;align-items: center;justify-content: center;">
+            <image src="../images/search.png" style="width: 32px;height: 32px;" mode></image>
+            <view style="font-size: 16px;color: #ccc;">黏贴商品链接或者请输入关键字比价</view>
+        </view>
+    </view>
+</view>
+<view style="width: 100%;height: 200px;"></view>
+<view style="display: flex;align-items: center;justify-content: space-around;width: 100%;height: 50px;background: white;position: fixed;z-index: 1;">
+    <view bindtap="swtabs" style="height: 50px;line-height: 50px;" tt:for="{{tabs}}" tt:key="{{index}}" class="{{item.active?'active':''}}" data-index="{{index}}" data-name="{{item.name}}">{{item.name}}</view>
+</view>
+<view style="width: 100%;height: 50px;"></view>
+<view tt:if="{{panel=='历史查询'}}">
+    <view tt:if="{{jl.length==0}}" style="display: flex;align-items: center;flex-direction: column;margin-top: 20px;">
+        <image src="../images/category.png" style="width: 50px;height: 50px;"/>
+        <view style="color: #999;">没有搜索记录</view>
+    </view>
+    <view tt:for="{{jl}}" style="position: relative;width: 95%;margin:10px auto 10px;background: white;border-radius: 10px;" bindtap="look" data-id="{{item.id}}">
+        <view style="width: 30%;float: left;">
+            <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="widthFix"/>
+        </view>
+        <view style="width: 70%;float: left;padding-left: 10px;box-sizing: border-box;">
+            <view class="text_runcate">{{item.xm_name}}</view>
+            <view style="height:50px;"></view>
+            <view style="position: absolute;bottom: 22px;font-size: 16px;color: #ccc;">{{item.xm_sm}}</view>
+        </view>
+        <view style="clear: both;"></view>
+    </view>
+    <view tt:if="{{jl.length!=0}}" style="width: 90%;margin:0 auto 10px;padding-bottom: 10px;">
+        <view style="margin-top: 30px;">
+            <button bindtap="del" stype="width:95%;" type="primary">清空历史记录</button>
+        </view>
+    </view>
+</view>
+<view tt:else>
+    <view tt:for="{{xm}}" style="position: relative;width: 95%;margin:10px auto 10px;background: white;border-radius: 10px;" bindtap="look" data-id="{{item.id}}">
+        <view style="width: 30%;float: left;">
+            <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="widthFix"/>
+        </view>
+        <view style="width: 70%;float: left;padding-left: 10px;box-sizing: border-box;">
+            <view class="text_runcate">{{item.xm_name}}</view>
+            <view style="margin-top: 15px;color: red;">￥{{item.xm_jg}}</view>
+            <view style="height:50px;"></view>
+            <view style="position: absolute;bottom: 22px;font-size: 16px;color: #ccc;">{{item.xm_sm}}</view>
+            <view style="position: absolute;bottom: 22px;right:0;font-size: 16px;color: #ccc;">近{{utils.test()}}人查询</view>
+        </view>
+        <view style="clear: both;"></view>
+    </view>
+</view>

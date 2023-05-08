@@ -1,0 +1,20 @@
+page{
+  background: #f9f9f9;
+}
+
+.nowarp{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.active{
+  border-bottom: 1px solid #f00;
+}
+.text_runcate{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}

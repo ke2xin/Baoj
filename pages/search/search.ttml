@@ -1,0 +1,44 @@
+<view style="position: fixed;z-index:1;width: 100%;height: 50px;line-height: 50px;background: #ffffff;border-bottom: 1px solid #ccc;display: flex;align-items: center;padding-left: 5px;">
+    <view style="display: inline-block;width: 36px;height:34px;background: #eee;padding: 3px 0px 3px 10px;border-top-left-radius: 15px;border-bottom-left-radius: 15px;">
+        <image src="../images/search.png" style="display: contents;"/>
+    </view>
+    <input value="{{inputvalue}}" bindinput="handleInput" style="background: #eee;display: inline-block;height:40px;font-size: 14px;width: 52%;" placeholder="黏贴商品链接或输入关键词比价"/> 
+    <view bindtap="close" style="display: inline-block;width: 42px;height:40px;background: #eee;border-top-right-radius: 15px;border-bottom-right-radius: 15px;">
+        <image hidden="{{!show}}" src="../images/close.png" style="width: 32px;height: 32px;margin-top: 4px;"/>
+    </view>
+    <button bindtap="search" data-name="{{tips}}" class="{{tips_css}}" style="display: inline-block;">{{tips}}</button>
+</view>
+<view style="width: 100%;height: 50px;"></view>
+<view style="position: fixed;width: 100%;background: #ffffff;z-index: 1;">
+    <view tt:if="{{type==2}}" style="display: flex;align-items: center;justify-content: space-around;border-bottom: 1px solid #ccc;margin-top: 15px;padding-bottom: 15px;">
+        <view class="{{item.active?'active':''}}" bindtap="sw" tt:for="{{items}}" tt:key="index" data-index="{{index}}">{{item.name}}</view>
+     </view>
+</view>
+
+<view style="width:100%;height: 50px;"></view>
+
+<view tt:if="{{type==1}}">
+    <view style="padding:0 0 10px 10px;margin: 5px auto;font-size: 18px;font-weight: bold;border-bottom: 1px solid #ccc;">历史搜索</view>
+    <view style="padding: 2px 10px;font-size: 16px;background: #ffffff;">
+        <view bindtap="goto" class="nowarp" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;" tt:for="{{jl}}" data-id="{{item.id}}">{{item.xm_name}}</view>
+    </view>
+    <view style="width: 90%;margin: auto;">
+        <view style="margin-top: 30px;">
+            <button bindtap="del" stype="width:95%;" type="primary">清空历史记录</button>
+        </view>
+    </view>
+</view>
+
+<view tt:if="{{type==2}}" style="margin-top: 10px;">
+    <view tt:for="{{xm}}" style="position: relative;border-bottom: 1px solid #ccc;" bindtap="look" data-id="{{item.id}}">
+        <view style="width: 30%;float: left;">
+            <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="aspectFit"/>
+        </view>
+        <view style="width: 70%;float: left;padding-left: 10px;box-sizing: border-box;">
+            <view class="text_runcate">{{item.xm_name}}</view>
+            <view style="margin-top: 15px;color: red;">￥{{item.xm_jg}}</view>
+            <view style="position: absolute;bottom: 22px;font-size: 16px;color: #ccc;">{{item.xm_sm}}</view>
+        </view>
+        <view style="clear: both;"></view>
+    </view>
+</view>

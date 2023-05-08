@@ -1,0 +1,12 @@
+{
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true,
+        "autoCompile": true
+    },
+    "appid": "tt6d2d1b90f21240d101",
+    "projectname": "Baoj"
+}
