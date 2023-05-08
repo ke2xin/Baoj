@@ -41,6 +41,7 @@ Page({
   },
   del(e) {
     var that = this;
+    
     const res = tt.setStorageSync('jl', []);
     that.setData({
       jl: []
