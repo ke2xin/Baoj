@@ -1,13 +1,14 @@
 <view style="position: relative;border-bottom: 1px solid #ccc;" bindtap="look">
     <view style="width: 30%;float: left;">
-        <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="aspectFit"/>
+        <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="aspectFit" />
     </view>
     <view style="width: 70%;float: left;padding-left: 10px;box-sizing: border-box;">
         <view class="text_runcate">{{item.xm_name}}</view>
-        <view style="margin-top: 15px;color: red;">￥{{item.xm_jg}}</view>
+        <view style="margin-top: 15px;color: #999;">定金<text style="color: red;">￥{{item.xm_jg}}</text></view>
         <view style="font-size: 16px;color: #ccc;">{{item.xm_sm}}</view>
-        <view bindtap="go" style="position: absolute;bottom: 10px;right: 10px;background: red;border-radius: 30px;padding: 5px 8px;color: white;">
-            立即购买
+        <view bindtap="go"
+            style="position: absolute;bottom: 10px;right: 10px;background: red;border-radius: 30px;padding: 5px 8px;color: white;">
+            立即抢购
         </view>
     </view>
     <view style="clear: both;"></view>
@@ -22,8 +23,11 @@
 </view>
 <view class="container">
     <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+    <view style="padding: 0 0 10px 10px;font-size: 14px;color: #ccc;">数据由慢慢买机器采集，24小时客服：18620640202</view>
     <button type="primary" bindtap="updateData">更新数据</button>
 </view>
+
+
 
 <view style="width: 100%;height: 20px;background: #eee;"></view>
 
@@ -31,33 +35,42 @@
     历史优惠活动
 </view>
 <view style="padding-bottom: 20px;">
-    <view class="ca" tt:for="{{list}}" tt:key="{{index}}" style="padding-left: 20px;font-size: 16px;margin-bottom: 10px;">
+    <view class="ca" tt:for="{{list}}" tt:key="{{index}}"
+        style="padding-left: 20px;font-size: 16px;margin-bottom: 10px;">
         <view>{{item.k_name}}</view>
         <view style="margin: 5px auto;font-size: 16px;color: #eee;">{{item.k_url}}</view>
     </view>
     <view bindtap="more" style="text-align: center;font-size: 16px;color: #999;">查看更多</view>
 </view>
 
-<view bindtap="zzc" hidden="{{!show}}" style="position: fixed;top: 0;width: {{windowWidth}}px;height: {{windowHeight}}px;background: rgba(0,0,0,.5);z-index: 1;display: flex;justify-content: center;align-items: center;">
-    <view style="width: 95%;height: 300px;background: #ffffff;border-radius: 5px;">
+<view hidden="{{!show}}"
+    style="position: fixed;top: 0;width: {{windowWidth}}px;height: {{windowHeight}}px;background: rgba(0,0,0,.5);z-index: 1;position: absolute;z-index: 1;width:100%;height:100%;display: flex;justify-content: center;align-items: center;">
+    <view style="width: 95%;height: 300px;background: #ffffff;border-radius: 5px;position: relative;z-index: 2;">
         <form bindsubmit="buy" style="position: relative;height: 100%;padding-left: 5px;">
-            <view style="text-align: center;margin: 10px auto;">请填写你的收件信息</view>
+            <view style="text-align: center;margin: 10px auto;">请填写你的预定信息</view>
             <view style="display: flex;align-items: center;margin-bottom: 10px;">
                 <text style="width: 50px;">姓名:</text>
-                <input placeholder="请填写姓名" type="text" name="name" style="padding-left: 10px;display: inline-block;font-size: 14px;"/>
+                <input placeholder="请填写姓名" type="text" name="name"
+                    style="padding-left: 10px;display: inline-block;font-size: 14px;" />
             </view>
             <view style="display: flex;align-items: center;margin-bottom: 10px;">
                 <text style="width: 50px;">手机:</text>
-                <input placeholder="请填写手机号" type="number" name="phone" style="padding-left: 10px;display: inline-block;font-size: 14px;"/>
+                <input placeholder="请填写手机号" type="number" name="phone"
+                    style="padding-left: 10px;display: inline-block;font-size: 14px;" />
             </view>
-            <view style="display: flex;align-items: center;margin-bottom: 10px;">
+            <!-- <view style="display: flex;align-items: center;margin-bottom: 10px;">
                 <text style="width: 50px;">地址:</text>
-                <input placeholder="请填写详细地址" type="text" name="address" style="padding-left: 10px;display: inline-block;font-size: 14px;"/>
-            </view>
-            <input hidden="{{true}}" name="xm_id" value="{{item.id}}"/>
-            <input hidden="{{true}}" name="xm_name" value="{{item.xm_name}}"/>
-            <input hidden="{{true}}" name="xm_pic" value="{{item.xm_pic}}"/>
-            <button form-type="submit" style="position: absolute;bottom: 20px;width: 90%;left: 5%;background: red;color: white;">确定</button>
+                <input placeholder="请填写详细地址" type="text" name="address"
+                    style="padding-left: 10px;display: inline-block;font-size: 14px;" />
+            </view> -->
+            <input hidden="{{true}}" name="xm_id" value="{{item.id}}" />
+            <input hidden="{{true}}" name="xm_name" value="{{item.xm_name}}" />
+            <input hidden="{{true}}" name="xm_pic" value="{{item.xm_pic}}" />
+            <input hidden="{{true}}" name="jg" value="{{item.xm_jg}}"/>
+            <!-- 隐藏空地址 -->
+            <input hidden="{{true}}" name="address" value="ckz" />
+            <button form-type="submit"
+                style="position: absolute;bottom: 20px;width: 90%;left: 5%;background: red;color: white;">确定</button>
         </form>
     </view>
 </view>

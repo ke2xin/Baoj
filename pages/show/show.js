@@ -182,7 +182,8 @@ Page({
                 phone: e.detail.value.phone,
                 xm_id: e.detail.value.xm_id,
                 xm_name: e.detail.value.xm_name,
-                xm_pic: e.detail.value.xm_pic
+                xm_pic: e.detail.value.xm_pic,
+                jg: e.detail.value.jg,
             },
             header: {
                 'content-type': 'application/x-www-form-urlencoded;'

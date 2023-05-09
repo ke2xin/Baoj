@@ -52,3 +52,10 @@
         <view style="clear: both;"></view>
     </view>
 </view>
+
+<view style="width: 60px;height: 60px;position: fixed;bottom: 10px;right: 10px;background:beige;border-radius: 5px;">
+    <button open-type="contact" style="width: 60px;height: 60px;padding: 0;border-radius: 30px;background: beige;">
+        <image src="../images/kf.png" style="width: 40px;height: 40px;"/>
+        <view style="display: inline-block;font-size: 12px;position: relative;top: -30px;">在线咨询</view>
+    </button>
+</view>
