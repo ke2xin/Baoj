@@ -1,0 +1,36 @@
+<sjs module="utils" src="../../utils/tools.sjs"></sjs>
+<view class="top" style="position: fixed;width: 100%;background: #ffffff;z-index: 1;">
+    <view
+        style="display: flex;align-items: center;justify-content: space-around;border-bottom: 1px solid #ccc;margin-top: 15px;padding-bottom: 15px;">
+        <view style="position: relative;" class="{{item.active?'active':''}}" bindtap="sw" tt:for="{{items}}"
+            tt:key="index" data-name="{{item.name}}" data-index="{{index}}">
+            <view class="{{triangle}}" tt:if="{{item.name=='价格'}}">{{item.name}}</view>
+            <view tt:else style="font-size: 16px;">{{item.name}}</view>
+        </view>
+    </view>
+</view>
+
+<view style="width:100%;height: 50px;"></view>
+
+<view tt:for="{{xm}}" style="position: relative;width: 95%;margin:10px auto 10px;background: white;border-radius: 10px;"
+    bindtap="look" data-id="{{item.id}}">
+    <view style="width: 30%;float: left;">
+        <image src="https://slpos.kosm.com.cn/ypdw/pic_one/{{item.xm_pic}}" style="width: 100%;" mode="widthFix" />
+    </view>
+    <view style="width: 70%;float: left;padding-left: 10px;box-sizing: border-box;">
+        <view class="text_runcate">{{item.xm_name}}</view>
+        <view style="margin-top: 15px;font-size: 10px;">套餐价￥{{item.xm_lsj}}</view>
+        <view style="height:30px;"></view>
+      
+        <view style="display: flex;justify-content: space-between;">
+            <view style="font-size: 10px;color: #ccc;margin-bottom: 10px;">{{item.xm_sm}}</view>
+            <view style="right:0;color: #ccc;font-size: 10px;">近{{utils.test()}}人查询</view>
+        </view>
+        <view tt:if="{{fun==1}}" style="font-size: 12px;color: #999;padding: 10px 0;">
+            <!-- <view>销量：{{item.cp_showgmsl}}</view> -->
+            <!-- <view>销量比例：{{item.xm_xssl}}</view> -->
+            <progress style="margin-top: 10px;" percent="{{item.xm_xssl}}" active stroke-width="6" />
+        </view>
+    </view>
+    <view style="clear: both;"></view>
+</view>

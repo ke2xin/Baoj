@@ -1,4 +1,5 @@
 /* e:\ckz\work\douyinproject\Baoj\pages\show\show.ttss */
+@import "../../wxParse/wxParse.wxss";
 ec-canvas {
     width: 100%;
     height: 100%;
@@ -13,3 +14,10 @@ ec-canvas {
     border-radius: 50%;
     margin-right:6px;
 }
+/* .iii{
+    display: flex;
+    justify-content: center;
+}
+.iii image{
+width: 100%;
+} */

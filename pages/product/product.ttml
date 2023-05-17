@@ -1,0 +1,40 @@
+<form bindsubmit="tj" style="padding-left: 10px;">
+    <view style="display: flex;align-items: center;margin-bottom: 10px;">
+        <text style="width: 50px;">人数:</text>
+        <input placeholder="请填写人数，如5" type="number" name="count"
+            style="padding-left: 10px;display: inline-block;font-size: 14px;" />
+    </view>
+    <view style="display: flex;align-items: center;margin-bottom: 10px;">
+        <text style="width: 50px;">地区:</text>
+        <input placeholder="请填写地区，如白云区" type="text" name="dq"
+            style="padding-left: 10px;display: inline-block;font-size: 14px;" />
+    </view>
+    <view style="display: flex;align-items: center;margin-bottom: 10px;">
+        <text style="width: 50px;">目的:</text>
+        <input placeholder="请填写目的，如生日" type="text" name="md"
+            style="padding-left: 10px;display: inline-block;font-size: 14px;" />
+    </view>
+    <view style="display: flex;align-items: center;margin-bottom: 10px;">
+        <text style="width: 50px;">类别:</text>
+        <input placeholder="请填写类别，如户外" type="text" name="lb"
+            style="padding-left: 10px;display: inline-block;font-size: 14px;" />
+    </view>
+    <view style="display: flex;align-items: center;margin-bottom: 10px;">
+        <text style="width: 50px;">停车场:</text>
+        <radio-group bindchange="checkboxChange" style="width: 150px;" name="tcc">
+            <label class="ttui-cell">
+              <view class="ttui-cell__hd">
+                <radio value="是" checked="{{true}}" disabled="{{false}}" color="#F85959" />
+              </view>
+              <view class="ttui-cell__bd">是</view>
+            </label>
+            <label class="ttui-cell">
+                <view class="ttui-cell__hd">
+                  <radio value="否" checked="{{false}}" disabled="{{false}}" color="#F85959" />
+                </view>
+                <view class="ttui-cell__bd">否</view>
+            </label>
+        </radio-group>
+    </view>
+    <button form-type="submit" style="margin-right: 10px;">报价</button>
+</form>

@@ -1,5 +1,7 @@
 // e:\ckz\work\douyinproject\Baoj\pages\show\show.js  ../../../utils/wxcharts.js
 var wxCharts = require('../../utils/wxcharts.js');
+//在使用的View中引入WxParse模块
+var WxParse = require('../../wxParse/wxParse.js');
 var app = getApp();
 var lineChart = null;
 
@@ -13,7 +15,10 @@ Page({
         show: false,
         list: [],
         page: 2,
-        id: 0
+        id: 0,
+        kz: 1,
+        hy_name: '',
+        hy_sj: ''
     },
     touchHandler: function (e) {
         console.log(lineChart.getCurrentDataIndex(e));
@@ -124,6 +129,7 @@ Page({
                     item: res.data.item,
                     list: res.data.list
                 });
+                WxParse.wxParse('article', 'html', res.data.item.xm_nr, that, 5);
                 var jl = tt.getStorageSync('jl');
                 if (jl) {
                     let newjl = jl.map(item => {
@@ -293,10 +299,84 @@ Page({
             });
         }
     },
-    zzc(e) {
+    gb(e) {
         console.log(e);
         this.setData({
             show: false
         });
-    }
+    },
+    tj(e) {
+        console.log(e);
+        var that = this;
+        if (that.data.kz == 2) {
+            tt.showToast({
+                title: '您已报名成功,请勿重复提交！'
+            });
+            return false;
+        }
+        if (e.detail.value.name == "") {
+            tt.showToast({
+                title: '请填写您的称呼！'
+            });
+            return false;
+        }
+        if (e.detail.value.phone == "") {
+            tt.showToast({
+                title: '请填写您的手机号！'
+            });
+            return false;
+        }
+        that.setData({
+            hy_name: e.detail.value.name,
+            hy_sj: e.detail.value.phone
+        });
+        tt.showLoading({
+            title: '数据正在提交...'
+        });
+        tt.request({
+            url: that.data.yuming + 'ss.php',
+            method: 'POST',
+            data: {
+                count: e.detail.value.name,
+                dq: e.detail.value.phone
+            },
+            header: {
+                'content-type': 'application/x-www-form-urlencoded;'
+            },
+            success: (res) => {
+                console.log(res);
+                tt.hideLoading();
+                tt.showModal({
+                    title: '报名成功，2小时内有专人联系您，请保持手机畅通！'
+                });
+                that.setData({
+                    kz: 2
+                })
+            },
+            fail: (res) => {
+                console.log(res);
+            },
+        });
+    },
+    onShareAppMessage: function (shareOption) {
+        var that = this;
+        switch (shareOption.channel) {
+            case 'video':
+                return {
+                    channel: 'video',
+                        title: that.data.item.xm_name,
+                        imageUrl: 'https://slpos.kosm.com.cn/ypdw/pic_one/' + that.data.item.xm_pic,
+                        path: 'pages/show/show?id=' + that.data.item.id,
+                        extra: {
+                            videoTopics: ['话题一', '话题二'],
+                            videoPath: ''
+                        }
+                };
+            case 'qrcode':
+                let i = 0;
+                break;
+            default:
+                break;
+        }
+    },
 })

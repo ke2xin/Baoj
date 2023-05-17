@@ -3,35 +3,47 @@ const app = getApp()
 Page({
   data: {
     yuming: app.globalData.yuming,
-    jl: [],
-    tabs: [{
-        name: '历史查询',
-        active: true
-      },
-      {
-        name: '查询排行',
-        active: false
-      }
-    ],
-    panel: '历史查询',
-    xm: []
+    item: {}
   },
   onLoad: function () {
     console.log('Welcome to Mini Code')
-  },
-  onShow:function(){
     var that = this;
-    const jl = tt.getStorageSync('jl');
-    console.log("历史记录：",jl);
-    that.setData({
-      jl:jl
-    })
+    tt.request({
+      url: that.data.yuming + 'home.php',
+      method: 'POST',
+      data: {
+
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded;'
+      },
+      success: (res) => {
+        console.log(res);
+        that.setData({
+          item: res.data
+        });
+      },
+      fail: (res) => {
+        console.log(res);
+      },
+    });
+  },
+  onShow: function () {
+
   },
   go(e) {
     console.log(e)
-    tt.navigateTo({
-      url: '../search/search'
-    });
+    if (e.currentTarget.dataset.index == 3) {
+      tt.navigateTo({
+        url: '../taoc/taoc?name=' + e.currentTarget.dataset.name +
+          '&index=' + e.currentTarget.dataset.index
+      });
+    } else {
+      tt.navigateTo({
+        url: '../sous/sous?name=' + e.currentTarget.dataset.name +
+          '&index=' + e.currentTarget.dataset.index
+      });
+    }
   },
   goto(e) {
     console.log(e);
@@ -52,7 +64,7 @@ Page({
     var that = this;
     var tabs = that.data.tabs;
     var panel = e.currentTarget.dataset.name;
-    if(panel=='查询排行'){
+    if (panel == '查询排行') {
       that.getData(0)
     }
 
@@ -92,10 +104,15 @@ Page({
       },
     });
   },
-  look(e){
+  look(e) {
     console.log(e);
     tt.navigateTo({
-      url: '../show/show?id='+e.currentTarget.dataset.id
+      url: '../show/show?id=' + e.currentTarget.dataset.id
     });
   },
+  product(e) {
+    tt.navigateTo({
+      url: '../product/product'
+    });
+  }
 })
