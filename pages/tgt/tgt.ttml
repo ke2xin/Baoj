@@ -1,0 +1,39 @@
+<!-- 无限自动滚动列表 -->
+<view class='contentBottom'>
+    <view class='BottomFirst'>
+        <text id='0'>购买记录</text>
+    </view>
+    <swiper class="tab-right" style='background:{{bgColor}};' vertical="true" autoplay="true" circular="true"
+        interval="2000" display-multiple-items='4'>
+        <view class="right-item">
+            <block tt:for='{{arr}}'>
+                <swiper-item>
+                    <view class='content-item'>
+                        <image src='{{item.avatarUrl}}' class='avater'></image>
+                        <text class='name'>{{item.nickName}}</text>
+                        <text class='wawa'>支付金额：{{item.reward}}元</text>
+                    </view>
+                </swiper-item>
+            </block>
+        </view>
+    </swiper>
+</view>
+
+
+
+<view class="contentBottom2">
+    <swiper bindchange="changeHandle" class="tab-right2" vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items="3">
+        <view class="right-item2">
+            <block tt:for='{{arr2}}'>
+                <swiper-item>
+                    <view class="content-item2">
+                        <image tt:if="{{item.avatarUrl!=""}}" src="{{item.avatarUrl}}" class="avater2"/>
+                        <text tt:if="{{item.nickName!=""}}" style="background: rgba(0, 0, 0, .5);border-radius: 50px;" class="name2">{{item.nickName}}</text>
+                        <text tt:else class="name2">{{item.nickName}}</text>
+                    </view>
+                </swiper-item>
+            </block>
+        </view>
+    </swiper>
+</view>
+

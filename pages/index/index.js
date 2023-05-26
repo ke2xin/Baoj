@@ -7,6 +7,19 @@ Page({
   },
   onLoad: function () {
     console.log('Welcome to Mini Code')
+
+  
+    tt.getLocation({
+      success: (res) => {
+        console.log("获取经纬度",res);
+        console.log("经度",res.longitude);
+        console.log("纬度",res.latitude);
+      },
+      fail: (res) => {
+        console.log("获取失败");
+      },
+    });
+
     var that = this;
     tt.request({
       url: that.data.yuming + 'home.php',
@@ -113,6 +126,21 @@ Page({
   product(e) {
     tt.navigateTo({
       url: '../product/product'
+    });
+  },
+  getPhoneNumberHandler(e){
+    console.log(e);
+  },
+  tg(e){
+    console.log(e)
+    tt.navigateTo({
+      url: '../tgt/tgt',
+      success: (res) => {
+        
+      },
+      fail: (res) => {
+        
+      },
     });
   }
 })

@@ -163,8 +163,12 @@
     </view>
 </view>
 
+<!-- <view style="position: fixed;bottom: 0;height: 60px;background: white;width:95%;margin-left: 2.5%;">
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumberHandler" style="height:50px;background: #fe8008;color: white;">手机号一键登录</button>
+</view> -->
+
 <view style="position: fixed;bottom: 0;height: 60px;background: white;width:95%;margin-left: 2.5%;">
-    <button style="height:50px;background: #fe8008;color: white;">31特惠</button>
+    <button bindtap="tg"  style="height:50px;background: #fe8008;color: white;">推广</button>
 </view>
 
 <view style="width: 60px;height: 60px;position: fixed;bottom: 80px;right: 10px;background:beige;border-radius: 5px;">

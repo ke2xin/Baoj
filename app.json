@@ -8,7 +8,8 @@
         "pages/product/product",
         "pages/detail/detail",
         "pages/sous/sous",
-        "pages/taoc/taoc"
+        "pages/taoc/taoc",
+        "pages/tgt/tgt"
     ],
     "window": {
         "backgroundTextStyle": "light",

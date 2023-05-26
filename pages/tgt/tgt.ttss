@@ -1,0 +1,132 @@
+/* e:\ckz\work\douyinproject\Baoj\pages\tgt\tgt.ttss */
+.contentBottom {
+    padding: 31px 0;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #f8e1da;
+}
+
+.BottomFirst {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #663a83;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.BottomFirst text {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: #663a83;
+    line-height: 31px;
+    border-right: 1px solid #663a83;
+    box-sizing: border-box;
+}
+
+.BottomFirst text:nth-child(1) {
+    border: none;
+}
+
+.tab-right {
+    width: 90%;
+    margin: 10px auto;
+    height: 210px;
+}
+
+.right-item {
+    padding: 0 10px;
+    background: #fbeeed;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-item {
+    height: 52px;
+    border-bottom: 1px solid #ede1d4;
+    width: 95%;
+}
+
+.avater {
+    height: 26px;
+    width: 26px;
+    border-radius: 52px;
+    margin-top: 13px;
+    float: left;
+}
+
+.name {
+    font-size: 13px;
+    float: left;
+    line-height: 52px;
+    color: #b0aaa9;
+    margin-left: 10px;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wawa {
+    font-size: 13px;
+    float: right;
+    line-height: 52px;
+    color: #999;
+}
+
+
+.contentBottom2 {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 31px 0;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.tab-right2 {
+    width: 90%;
+    margin: 10px auto;
+    height: 210px;
+    position: fixed;
+    bottom: 0;
+}
+
+.right-item2 {
+    padding: 0 10px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-item2 {
+    height: 52px;
+    /* border-bottom: 1px solid #ede1d4; */
+    width: 95%;
+}
+
+.avater2 {
+    height: 26px;
+    width: 26px;
+    border-radius: 52px;
+    margin-top: 13px;
+    float: left;
+}
+
+.name2 {
+    font-size: 13px;
+    float: left;
+    line-height: 30px;
+    color: #ffffff;
+    margin:11px 0 0 10px;
+    width: 40%;
+    height: 30px;
+    overflow: hidden;
+    padding-left: 10px;
+}
